@@ -1,0 +1,46 @@
+{% extends "base_html.html" %}
+{%block content%}
+<div >
+  <a class="btn btn-success mt-5 mx-2" style="text-decoration:none; color:black; padding-left:5px;" href="{% url "home"%}">Back To Homepage</a>
+</div>
+<div class="d-flex flex-wrap mt-5">
+  <div class="col-2">
+    <h3>Category</h3>
+
+    {%for cat in category%}
+    
+    <div>
+        <a href="{%url "category_wise_post" cat.slug%}" class="btn btn-info mb-3 mx-2">{{cat.name}}</a>
+    </div>
+    {%endfor%}
+  </div>
+  <div class="col-10">
+    <h5 class="d-flex justify-content-center">Total Data : {{data|length}}</h5>
+    <div class="books col-12">
+      <div class="d-flex flex-wrap justify-content-center">
+        {%for book in data%}
+        <div class="col-sm-4">
+         
+          <div class="card mx-2 my-2">
+            <img src="{{book.image.url}} " style="width=50%;" alt="" srcset="">
+            <div class="card-body">
+              <h3 class="card-title">{{book.title}}</h3>
+              <p class="card-text">{{book.discription}}</p>
+              <h6>Price : {{book.price}}</h6>
+              <h6>
+                Category : {% for cat in book.category.all%}
+                <a class="btn btn-warning disabled" href="">{{cat.name}}</a>
+                {%endfor%}
+              </h6>
+              <div class="d-flex justify-content-around">
+                <a href="#" class="btn btn-primary">Buy Now</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}
