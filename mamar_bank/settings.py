@@ -84,6 +84,10 @@ TEMPLATES = [
 WSGI_APPLICATION = "mamar_bank.wsgi.application"
 
 ALLOWED_HOSTS = ["*"]
+CSRF_TRUSTED_ORIGINS = [
+    "https://library-assignment.onrender.com",
+    "https://*.127.0.0.1",
+]
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
